@@ -22,7 +22,24 @@ const newCity = async (req, res) => {
   }
 };
 
-// * Get new city
+//* List of All city
+const listOfAllCity = async (req, res) => {
+  try {
+    const response = await cityService.allCity();
+    return res.status(200).json({
+      success: true,
+      message: "List of all cities",
+      data: response,
+      err: {},
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .json({ success: true, message: "Bad Request", data: {}, err: error });
+  }
+};
+
+// * Get city
 const listOfCity = async (req, res) => {
   try {
     const id = req.params.id;
@@ -75,4 +92,4 @@ const removeCity = async (req, res) => {
       .json({ success: false, message: "Internal Error", err: error });
   }
 };
-module.exports = { newCity, listOfCity, changeCity, removeCity };
+module.exports = { newCity, listOfCity, changeCity, removeCity, listOfAllCity };

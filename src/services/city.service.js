@@ -25,6 +25,11 @@ class CityService {
     }
   }
 
+  async allCity() {
+    const cities = await this.cityRepository.getAllCity();
+    return cities;
+  }
+
   async fetchCity(cityId) {
     try {
       const fetchCity = await this.cityRepository.getCity(cityId);

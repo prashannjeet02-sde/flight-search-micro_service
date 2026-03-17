@@ -5,6 +5,8 @@ const cityRouter = express.Router();
 
 cityRouter.get("/:id", CityController.listOfCity);
 
+cityRouter.get("/", CityController.listOfAllCity);
+
 cityRouter.post("/", CityController.newCity);
 
 cityRouter.put("/:id", CityController.changeCity);

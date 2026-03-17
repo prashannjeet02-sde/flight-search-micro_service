@@ -25,6 +25,18 @@ class CityRepository {
     }
   }
 
+  async getAllCity() {
+    try {
+      const allCity = await City.findAll({
+        attributes: ["city_name"],
+      });
+      return allCity;
+    } catch (error) {
+      console.log("Cannot fetch city list");
+      throw error;
+    }
+  }
+
   async deleteCity(id) {
     try {
       const deleted = await City.destroy({
