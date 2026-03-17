@@ -44,8 +44,10 @@ const listOfCity = async (req, res) => {
 const changeCity = async (req, res) => {
   try {
     const id = req.params.id;
-    const modify = req.body.city_name;
-    const result = await cityService.updateCity(id, modify);
+    const data = {
+      city_name: req.body.city_name,
+    };
+    const result = await cityService.updateCity(id, data);
     return res.status(200).json({
       success: true,
       message: "City name updated Successfully",

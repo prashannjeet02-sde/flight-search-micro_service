@@ -3,7 +3,7 @@ const { CityController } = require("../../controllers/index");
 const express = require("express");
 const cityRouter = express.Router();
 
-cityRouter.get("/", CityController.listOfCity);
+cityRouter.get("/:id", CityController.listOfCity);
 
 cityRouter.post("/", CityController.newCity);
 
