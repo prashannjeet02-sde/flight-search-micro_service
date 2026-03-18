@@ -15,6 +15,14 @@ class CityService {
     }
   }
 
+  async bulkCity(cities) {
+    if (!Array.isArray(cities) || cities.length === 0) {
+      throw new Error("City list must be non-empty array");
+    }
+    const response = await this.cityRepository.bulkCityInsert(cities);
+    return response;
+  }
+
   async deleteCity(cityId) {
     try {
       const deleted = await this.cityRepository.deleteCity(cityId);

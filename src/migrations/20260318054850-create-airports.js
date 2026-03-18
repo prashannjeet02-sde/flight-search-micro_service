@@ -23,7 +23,6 @@ module.exports = {
         references: {
           model: "Cities",
           key: "id",
-          as: "city_id",
         },
         allowNull: false,
       },

@@ -22,6 +22,27 @@ const newCity = async (req, res) => {
   }
 };
 
+// Create City in One go
+const multipleCities = async (req, res) => {
+  try {
+    const bulk = req.body;
+    const result = await cityService.bulkCity(bulk);
+    return res.status(201).json({
+      success: true,
+      message: "Multiple city created",
+      data: result,
+      err: {},
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to enter multiple cities",
+      data: {},
+      err: error,
+    });
+  }
+};
+
 //* List of All city
 const listOfAllCity = async (req, res) => {
   try {
@@ -92,4 +113,11 @@ const removeCity = async (req, res) => {
       .json({ success: false, message: "Internal Error", err: error });
   }
 };
-module.exports = { newCity, listOfCity, changeCity, removeCity, listOfAllCity };
+module.exports = {
+  newCity,
+  listOfCity,
+  changeCity,
+  removeCity,
+  listOfAllCity,
+  multipleCities,
+};

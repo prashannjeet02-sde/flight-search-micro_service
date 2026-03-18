@@ -17,6 +17,18 @@ class CityRepository {
     }
   }
 
+  async bulkCityInsert(cities) {
+    try {
+      const bulkCity = await City.bulkCreate(cities, {
+        validate: true,
+      });
+      return bulkCity;
+    } catch (error) {
+      console.log("Cannot make bulk entry!Problem in Repo layer");
+      throw error;
+    }
+  }
+
   async getCity(id) {
     try {
       const findCity = await City.findByPk(id);
