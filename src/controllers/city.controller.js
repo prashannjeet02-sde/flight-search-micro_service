@@ -25,7 +25,7 @@ const newCity = async (req, res) => {
 //* List of All city
 const listOfAllCity = async (req, res) => {
   try {
-    const response = await cityService.allCity();
+    const response = await cityService.allCity(req.query);
     return res.status(200).json({
       success: true,
       message: "List of all cities",

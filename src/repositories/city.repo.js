@@ -1,3 +1,5 @@
+const { Op } = require("sequelize");
+
 const { City } = require("../models/index");
 
 class CityRepository {
@@ -25,8 +27,18 @@ class CityRepository {
     }
   }
 
-  async getAllCity() {
+  async getAllCity(filter) {
     try {
+      if (filter.city_name) {
+        const autoComplete = await City.findAll({
+          where: {
+            city_name: {
+              [Op.startsWith]: filter.city_name,
+            },
+          },
+        });
+        return autoComplete;
+      }
       const allCity = await City.findAll({
         attributes: ["city_name"],
       });

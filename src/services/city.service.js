@@ -25,8 +25,10 @@ class CityService {
     }
   }
 
-  async allCity() {
-    const cities = await this.cityRepository.getAllCity();
+  async allCity(filter) {
+    const cities = await this.cityRepository.getAllCity({
+      city_name: filter.city_name,
+    });
     return cities;
   }
 
