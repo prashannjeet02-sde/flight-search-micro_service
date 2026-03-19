@@ -1,7 +1,7 @@
 const express = require("express");
 const { PORT } = require("./config/server.config");
 
-const cityPath = require("./routes/index");
+const apiRoute = require("./routes/index");
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extented: true }));
 app.use(express.text());
 
 // Routes
-app.use("/api", cityPath);
+app.use("/api", apiRoute);
 
 // Server
 app.listen(PORT, () => {
