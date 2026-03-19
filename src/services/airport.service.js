@@ -14,7 +14,7 @@ class AirportService {
     if (!Array.isArray(airport) || airport.length === 0) {
       throw new Error("Airport list must be non-empty ");
     }
-    const bulkAirport = await this.airportRepo.createMultipleAirports(data);
+    const bulkAirport = await this.airportRepo.createMultipleAirports(airport);
     return bulkAirport;
   }
 
@@ -36,6 +36,14 @@ class AirportService {
   async serviceDeleteAirport(airportId) {
     const deletePort = await this.airportRepo.deleteAirport(airportId);
     return deletePort;
+  }
+
+  async serviceBulkAirportDelete(airportIds) {
+    if (!Array.isArray(airportIds) || airportIds.length === 0) {
+      throw new Error("Ids cannot be empty");
+    }
+    const deleteCount = await this.airportRepo.bulkAirportDelete(airportIds);
+    return deleteCount;
   }
 }
 

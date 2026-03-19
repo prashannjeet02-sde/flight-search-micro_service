@@ -7,7 +7,7 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extented: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
 
 // Routes

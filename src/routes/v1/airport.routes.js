@@ -10,9 +10,14 @@ airportRoutes.post("/bulk", AirportController.controllerMultipleAirports);
 
 airportRoutes.get("/:id", AirportController.controllerGetAirport);
 
-airportRoutes.get("/", AirportController.controllerGetAirport);
+airportRoutes.get("/", AirportController.controllerGetAirports);
 
 airportRoutes.put("/:id", AirportController.controllerUpdateAirport);
+
+airportRoutes.delete(
+  "/multiple",
+  AirportController.controllerBulkAirportDelete,
+);
 
 airportRoutes.delete("/:id", AirportController.controllerDeleteAirport);
 

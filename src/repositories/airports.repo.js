@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Airports } = require("../models/index");
 
 class AirportRepository {
@@ -7,14 +8,14 @@ class AirportRepository {
   }
 
   async createMultipleAirports(airports) {
-    const multipleAirports = await Airports.createBulk(airports, {
+    const multipleAirports = await Airports.bulkCreate(airports, {
       validate: true,
     });
     return multipleAirports;
   }
 
   async getAirport(airportId) {
-    const airport = await Airports.findPk(airportId);
+    const airport = await Airports.findByPk(airportId);
     return airport;
   }
 
@@ -24,12 +25,10 @@ class AirportRepository {
   }
 
   async updateAirport(airportId, data) {
-    const airport = await Airports.findPk(airportId);
+    const airport = await Airports.findByPk(airportId);
 
     if (!airport) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Not Such airport found" });
+      throw new Error("Airport not found");
     }
 
     ((airport.name = data.name), (airport.address = data.address));
@@ -39,8 +38,23 @@ class AirportRepository {
   }
 
   async deleteAirport(airportId) {
-    const removeAirport = await Airports.destroy(airportId);
+    const removeAirport = await Airports.destroy({
+      where: {
+        id: airportId,
+      },
+    });
     return removeAirport;
+  }
+
+  async bulkAirportDelete(airportIds) {
+    const bulkDelete = await Airports.destroy({
+      where: {
+        id: {
+          [Op.in]: airportIds,
+        },
+      },
+    });
+    return bulkDelete;
   }
 }
 

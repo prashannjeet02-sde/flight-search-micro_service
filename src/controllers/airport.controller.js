@@ -83,7 +83,7 @@ const controllerGetAirports = async (req, res) => {
 // * Update Airport
 const controllerUpdateAirport = async (req, res) => {
   try {
-    const airportId = req.body.params;
+    const airportId = req.params.id;
     const data = {
       name: req.body.name,
       address: req.body.address,
@@ -93,7 +93,7 @@ const controllerUpdateAirport = async (req, res) => {
       success: true,
       message: "Airport Data Updated Successfully",
       data: result,
-      err: error,
+      err: {},
     });
   } catch (error) {
     return res.status(500).json({
@@ -125,6 +125,23 @@ const controllerDeleteAirport = async (req, res) => {
   }
 };
 
+const controllerBulkAirportDelete = async (req, res) => {
+  try {
+    const ids = req.body.id;
+    const deleteCount = await airportService.serviceBulkAirportDelete(ids);
+    return res
+      .status(200)
+      .json({ success: true, message: "Deleted Successfully", err: {} });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete airports",
+      data: {},
+      err: error,
+    });
+  }
+};
+
 module.exports = {
   controllerCreateAirport,
   controllerMultipleAirports,
@@ -132,4 +149,5 @@ module.exports = {
   controllerGetAirports,
   controllerUpdateAirport,
   controllerDeleteAirport,
+  controllerBulkAirportDelete,
 };
