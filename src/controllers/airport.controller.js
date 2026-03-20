@@ -80,6 +80,24 @@ const controllerGetAirports = async (req, res) => {
   }
 };
 
+// * Autocomplete Airport API
+const controllerAutoCompleteAirport = async (req, res) => {
+  try {
+    const { letter } = req.query;
+    const airport = await airportService.serviceAutocompleteAirport(letter);
+    return res
+      .status(200)
+      .json({ success: true, message: "Airports", data: airport, err: {} });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Bad Request",
+      data: {},
+      err: error.message,
+    });
+  }
+};
+
 // * Update Airport
 const controllerUpdateAirport = async (req, res) => {
   try {
@@ -106,6 +124,7 @@ const controllerUpdateAirport = async (req, res) => {
   }
 };
 
+// * Delete Airport
 const controllerDeleteAirport = async (req, res) => {
   try {
     const airportId = req.params.id;
@@ -126,6 +145,7 @@ const controllerDeleteAirport = async (req, res) => {
   }
 };
 
+// * Delete Multiple Airports
 const controllerBulkAirportDelete = async (req, res) => {
   try {
     const ids = req.body.id;
@@ -151,4 +171,5 @@ module.exports = {
   controllerUpdateAirport,
   controllerDeleteAirport,
   controllerBulkAirportDelete,
+  controllerAutoCompleteAirport,
 };

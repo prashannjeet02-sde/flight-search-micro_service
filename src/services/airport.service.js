@@ -28,6 +28,14 @@ class AirportService {
     return getAllAirport;
   }
 
+  async serviceAutocompleteAirport(letter) {
+    if (!letter) {
+      throw new Error("Enter alphabet to get airport options");
+    }
+    const autocomplete = await this.airportRepo.autocompleteAirport(letter);
+    return autocomplete;
+  }
+
   async serviceUpdateAirport(airportId, data) {
     const updatePort = await this.airportRepo.updateAirport(airportId, data);
     return updatePort;

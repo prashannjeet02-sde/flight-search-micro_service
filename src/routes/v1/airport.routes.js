@@ -8,6 +8,11 @@ airportRoutes.post("/", AirportController.controllerCreateAirport);
 
 airportRoutes.post("/bulk", AirportController.controllerMultipleAirports);
 
+airportRoutes.get(
+  "/autocomplete",
+  AirportController.controllerAutoCompleteAirport,
+);
+
 airportRoutes.get("/:id", AirportController.controllerGetAirport);
 
 airportRoutes.get("/", AirportController.controllerGetAirports);

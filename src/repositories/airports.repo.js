@@ -32,6 +32,17 @@ class AirportRepository {
     return allAirports;
   }
 
+  async autocompleteAirport(letter) {
+    const autocomplete = await Airports.findAll({
+      where: {
+        name: {
+          [Op.like]: `${letter}%`,
+        },
+      },
+    });
+    return autocomplete;
+  }
+
   async updateAirport(airportId, data) {
     const airport = await Airports.findByPk(airportId);
 
