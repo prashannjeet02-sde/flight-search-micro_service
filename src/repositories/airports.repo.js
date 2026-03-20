@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Airports } = require("../models/index");
+const { Airports, City } = require("../models/index");
 
 class AirportRepository {
   async createAirport(airport) {
@@ -20,7 +20,15 @@ class AirportRepository {
   }
 
   async getAllAirports() {
-    const allAirports = await Airports.findAll();
+    const allAirports = await Airports.findAll({
+      include: [
+        {
+          model: City,
+          as: "city",
+          attributes: ["city_name"],
+        },
+      ],
+    });
     return allAirports;
   }
 

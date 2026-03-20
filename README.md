@@ -12,7 +12,7 @@ npx sequelize-cli db:create
 
 ```
 Sequelize command to create models
-npx sequelize-cli models:migrate --name City --attributes city_name:string
+npx sequelize-cli model:generate --name City --attributes city_name:string
 ```
 
 ```
