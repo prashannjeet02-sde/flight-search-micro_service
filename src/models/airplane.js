@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       company_name: { type: DataTypes.STRING, allowNull: false },
       model_number: { type: DataTypes.STRING, allowNull: false },
-      capacity: { type: DataTypes.INTEGER, allowNull: false },
+      capacity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 40 },
     },
     {
       sequelize,
