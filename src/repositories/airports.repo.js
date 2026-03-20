@@ -39,7 +39,9 @@ class AirportRepository {
       throw new Error("Airport not found");
     }
 
-    ((airport.name = data.name), (airport.address = data.address));
+    ((airport.name = data.name),
+      (airport.address = data.address),
+      (airport.city_id = data.city_id));
 
     await airport.save();
     return airport;

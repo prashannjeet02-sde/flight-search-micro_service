@@ -87,6 +87,7 @@ const controllerUpdateAirport = async (req, res) => {
     const data = {
       name: req.body.name,
       address: req.body.address,
+      city_id: req.body.city_id,
     };
     const result = await airportService.serviceUpdateAirport(airportId, data);
     return res.status(200).json({
