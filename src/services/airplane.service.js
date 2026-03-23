@@ -12,7 +12,7 @@ class AirplaneService {
 
   async serviceCreateMultipleAirlines(airplanesData) {
     if (!Array.isArray(airplanesData) || airplanesData.length === 0) {
-      throw new Error("Airplane section cannot be empty");
+      throw new Error("Must contain array of airplane data");
     }
     const multiAirplane =
       await this.airplaneService.createMultipleAirplanes(airplanesData);
