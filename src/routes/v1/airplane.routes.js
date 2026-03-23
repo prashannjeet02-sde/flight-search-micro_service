@@ -15,7 +15,7 @@ airplaneRouter.get("/:id", AirplaneController.controllerGetAirplane);
 
 airplaneRouter.get("/", AirplaneController.controllerGetMultipleAirplanes);
 
-airplaneRouter.update("/:id", AirplaneController.controllerUpdateAirplane);
+airplaneRouter.put("/:id", AirplaneController.controllerUpdateAirplane);
 
 airplaneRouter.delete(
   "/multidel",
