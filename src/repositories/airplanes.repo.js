@@ -37,7 +37,6 @@ class AirplaneRepository {
     ((modifyAirplane.company_name = data.company_name),
       (modifyAirplane.model_number = data.model_number),
       (modifyAirplane.capacity = data.capacity));
-
     await modifyAirplane.save();
     return modifyAirplane;
   }
