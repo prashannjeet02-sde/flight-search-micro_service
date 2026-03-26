@@ -34,6 +34,9 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      boardingGate: {
+        type: Sequelize.STRING,
+      },
       price: {
         type: Sequelize.INTEGER,
         allowNull: false,
