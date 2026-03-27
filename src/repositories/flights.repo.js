@@ -1,9 +1,14 @@
 const { flights } = require("../models/index");
 
 class FlightRepository {
-  async CreateFlight(data) {
-    const newFlight = await flights.create(data);
-    return newFlight;
+  async RepoCreateFlight(data) {
+    const flight = await flights.create(data);
+    return flight;
+  }
+
+  async RepoGetFlight(flightId) {
+    const getFlight = await flights.findByPk(flightId);
+    return getFlight;
   }
 }
 
