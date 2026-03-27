@@ -10,6 +10,13 @@ class FlightService {
   }
 
   async serviceCreateFlight(data) {
+    const departureTime = new Date(data.departureTime);
+    const arrivalTime = new Date(data.arrivalTime);
+
+    if (arrivalTime < departureTime) {
+      throw new Error("Arrival time must be greater then departure time");
+    }
+
     const seatingCapacity = await this.airplaneRepo.getAirplaneById(
       data.airplaneId,
     );
