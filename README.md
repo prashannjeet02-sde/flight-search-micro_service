@@ -54,4 +54,10 @@ This folder shows incremental changes on database level.Its like what is getting
 ### Seeders
 --------------
 This folder is use to penetrate dummy data inside our tables, to check if things are working fine.
+
+** The below command generates a seed file
+npx sequelize-cli seed:genereate --name (name of seed folder)
+
+** The below command will push all the changes in seed file to db
+npx sequelize-cli db:seed:all
 ```

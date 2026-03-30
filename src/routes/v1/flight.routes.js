@@ -2,10 +2,8 @@ const { FlightController } = require("../../controllers/index");
 
 const express = require("express");
 
-const routerFlight = express.Router();
+const routeFlights = express.Router();
 
-routerFlight.post("/", FlightController.controllerCreateFlight);
+routeFlights.post("/", FlightController.controllerCreateFlight);
 
-routerFlight.get("/:id", FlightController.controllerGetFlightById);
-
-module.exports = routerFlight;
+module.exports = routeFlights;
