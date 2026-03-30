@@ -10,6 +10,12 @@ class FlightService {
   }
 
   async serviceCreateFlight(data) {
+    const arrival = new Date(data.arrivalTime);
+    const departure = new Date(data.departureTime);
+
+    if (arrival < departure) {
+      throw new Error("Arrival time cannot be small then Departure time");
+    }
     const airplaneData = await this.airplaneRepo.getAirplaneById(
       data.airplaneId,
     );
