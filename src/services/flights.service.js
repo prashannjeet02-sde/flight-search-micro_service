@@ -26,6 +26,16 @@ class FlightService {
     });
     return flight;
   }
+
+  async serviceFlightById(flightId) {
+    const flight = await this.flightRepo.GetFlightByIdRepository(flightId);
+    return flight;
+  }
+
+  async serviceGetAllFlights(data) {
+    const flights = await this.flightRepo.GetAllFlightsRepository(data);
+    return flights;
+  }
 }
 
 module.exports = FlightService;
